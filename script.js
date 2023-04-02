@@ -23,7 +23,6 @@ function executeSum(indexOfAdd) {
     console.log(b)
     //execute sum
     let result = sum(a, b);
-    document.getElementById('upperScreen').innerText = document.getElementById('upperScreen').innerText + ` = ${result}`;
 
     document.getElementById('mainScreen').innerText = `${result}`;
 }
