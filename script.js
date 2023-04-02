@@ -10,7 +10,13 @@ function addition(a, b) {
 function subtraction(a, b) {
 
     return a - b;
-    
+
+}
+
+function multiply(a, b) {
+
+    return a * b;
+
 }
 
 //add a num that been clicked in array(text) ;
@@ -28,16 +34,17 @@ function executeOperation(index) {
     let result = 0;
     //select operation
 
-    console.log(text[index])
     switch (true) {
         case (text[index] == '+'):
             result = addition(a, b);
             break;
         case (text[index] == '-'):
-            console.log(a);
-            console.log(b);
             result = subtraction(a, b);
             break;
+        case (text[index] == '*'):
+            result = multiply(a, b);
+            break;
+
     }
 
     document.getElementById('mainScreen').innerText = `${result}`;
@@ -58,6 +65,9 @@ function execute(e) {
                 break;
             case (text.indexOf('-') != -1):
                 executeOperation(text.indexOf('-'));
+                break;
+            case (text.indexOf('*') != -1):
+                executeOperation(text.indexOf('*'));
                 break;
         }
     }
