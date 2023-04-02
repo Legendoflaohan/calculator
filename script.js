@@ -23,7 +23,7 @@ function executeSum(indexOfAdd) {
     console.log(b)
     //execute sum
     let result = sum(a, b);
-    document.getElementById('upperScreen').innerText = document.getElementById('mainScreen').innerText + ` = ${result}`;
+    document.getElementById('upperScreen').innerText = document.getElementById('upperScreen').innerText + ` = ${result}`;
 
     document.getElementById('mainScreen').innerText = `${result}`;
     document.getElementById('mainScreen').style.fontSize = '32px';
@@ -48,12 +48,12 @@ function execute(e) {
 }
 
 function interFace(e) {
-    if (document.getElementById('mainScreen').innerText == 'mainScreen') {
-        document.getElementById('mainScreen').innerText = '';
+    if (document.getElementById('upperScreen').innerText == 'upper') {
+        document.getElementById('upperScreen').innerText = '';
     }
     
     if (e.target.innerText != 'enter') {
-        document.getElementById('mainScreen').innerText += e.target.innerText;
+        document.getElementById('upperScreen').innerText += e.target.innerText;
     }
 }
 
