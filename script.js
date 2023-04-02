@@ -26,7 +26,6 @@ function executeSum(indexOfAdd) {
     document.getElementById('upperScreen').innerText = document.getElementById('upperScreen').innerText + ` = ${result}`;
 
     document.getElementById('mainScreen').innerText = `${result}`;
-    document.getElementById('mainScreen').style.fontSize = '32px';
 }
 
 function execute(e) {
