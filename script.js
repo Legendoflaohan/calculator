@@ -29,6 +29,12 @@ function getText(e) {
     text.push(input);
 }
 
+function getTextKeyboard(e) {
+    let input = e.key;
+    console.log(input)
+    text.push(input);
+}
+
 //core operation
 function executeOperation(index) {
     //get two arguments for operation
@@ -62,7 +68,7 @@ function executeOperation(index) {
 function execute(e) {
     getText(e);
     //locate 'enter'
-    let indexOfEnter = text.indexOf('enter');
+    let indexOfEnter = text.indexOf('Enter');
 
     //execute when 'enter' is clicked
     if (indexOfEnter != -1) {
@@ -83,11 +89,33 @@ function execute(e) {
                 break;
         }
     }
-
-
-
 }
 
+function executeKeyboard(e) {
+    getTextKeyboard(e);
+    //locate 'enter'
+    let indexOfEnter = text.indexOf('Enter');
+
+    //execute when 'enter' is clicked
+    if (indexOfEnter != -1) {
+        //remove 'enter'
+        text.pop();
+        switch (true) {
+            case (text.indexOf('+') != -1):
+                executeOperation(text.indexOf('+'));
+                break;
+            case (text.indexOf('-') != -1):
+                executeOperation(text.indexOf('-'));
+                break;
+            case (text.indexOf('*') != -1):
+                executeOperation(text.indexOf('*'));
+                break;
+            case (text.indexOf('/') != -1):
+                executeOperation(text.indexOf('/'));
+                break;
+        }
+    }
+}
 
 
 function interFace(e) {
@@ -97,7 +125,10 @@ function interFace(e) {
     //so won't enter this if sentence, I'm such a geneious
     if (text[0] == result && text.length == 1) {
         //if the input is an operator, do this
-        if (e.target.innerText == ('+' || '-' || '*' || '/')) {
+        if (e.target.innerText == '+' ||
+            e.target.innerText == '-' ||
+            e.target.innerText == '*' ||
+            e.target.innerText == '/') {
             document.getElementById('mainScreen').innerText = '';
             document.getElementById('upperScreen').innerText = text[0];
         } else {
@@ -108,11 +139,37 @@ function interFace(e) {
         }
     }
 
-    if (e.target.innerText != 'enter') {
+    if (e.target.innerText != 'Enter') {
 
         document.getElementById('upperScreen').innerText += e.target.innerText;
     }
 }
+
+function interFaceKeyboard(e) {
+
+    if (text[0] == result && text.length == 1) {
+        //if the input is an operator, do this
+        if (e.key == '+' ||
+            e.key == '-' ||
+            e.key == '*' ||
+            e.key == '/') {
+            document.getElementById('mainScreen').innerText = '';
+            document.getElementById('upperScreen').innerText = text[0];
+        } else {
+            //if the input is a number character(else of being an operator), do this
+            text.length = 0;
+            document.getElementById('mainScreen').innerText = '';
+            document.getElementById('upperScreen').innerText = '';
+        }
+    }
+
+    if (e.key != 'Enter') {
+
+        document.getElementById('upperScreen').innerText += e.key;
+    }
+}
+
+
 
 function soundEffect(e) {
     switch (e.target.innerText) {
@@ -129,7 +186,27 @@ function soundEffect(e) {
 
 }
 
+function soundEffectKeyboard(e) {
+    switch (e.target.innerText) {
+        case '0':
+            document.getElementById('soundOne').pause();
+            document.getElementById('soundZero').currentTime = 0;
+            document.getElementById('soundZero').play();
+            break;
+        case '1':
+            document.getElementById('soundZero').pause();
+            document.getElementById('soundOne').currentTime = 0;
+            document.getElementById('soundOne').play();
+    }
+
+}
+
+
 //return text from element that been clicked
 addEventListener('click', interFace);
 addEventListener('click', execute);
 addEventListener('click', soundEffect);
+//keyboard feature
+addEventListener('keydown', interFaceKeyboard);
+addEventListener('keydown', executeKeyboard);
+addEventListener('keydown', soundEffectKeyboard);
