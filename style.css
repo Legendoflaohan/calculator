@@ -1,0 +1,136 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px;
+}
+
+.screen {
+    border-style: solid;
+    border-width: 1px;
+    padding: 4px;
+
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+
+    margin-bottom: 10px;
+}
+
+.upper {
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px 10px;
+    margin-bottom: 4px;
+}
+
+.mainScreen {
+    border-style: solid;
+    border-width: 1px;
+    padding: 20px 10px;
+}
+
+.clear {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.ac, .ce {
+    border-style: solid;
+    border-width: 1px;
+    flex-grow: 1;
+    padding: 4px 10px 4px 10px;
+    text-align: center;
+}
+
+.ac {
+    margin-right: 20px;
+}
+
+.keys {
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px;
+}
+
+.partOne {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.unit {
+    display:flex;
+    width: 60px;
+    height: 60px;
+    border-style: solid;
+    border-width: 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+.partTwo {
+    margin-bottom: 8px;
+}
+
+.partTwo,
+.partThree {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cubeOne {
+    display: flex;
+    flex-wrap: wrap;
+    width: 140px;
+    gap: 8px;
+}
+
+.cubeTwo {
+    display: flex;
+    width: 132px;
+    justify-content: space-between;
+}
+
+.nineSix {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.add {
+    display:flex;
+    width: 60px;
+    height: 130px;
+    border-style: solid;
+    border-width: 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+.cubeThree {
+    display: flex;
+    flex-direction: column;
+    height: 132px;
+    justify-content: space-between;
+}
+
+.oneTwo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.zero {
+    display:flex;
+    width: 130px;
+    height: 60px;
+    border-style: solid;
+    border-width: 1px;
+    justify-content: center;
+    align-items: center;
+}
