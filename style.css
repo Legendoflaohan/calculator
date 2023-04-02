@@ -26,7 +26,7 @@ body {
     background-color: grey;
 }
 
-.upper {
+#upperScreen {
     border-style: solid;
     border-width: 1px;
     padding: 8px 10px;
