@@ -1,25 +1,27 @@
 let text = [];
-
+let result = 0;
 //sum up two numbers
 function addition(a, b) {
 
     return a + b;
 
 }
-
 function subtraction(a, b) {
 
     return a - b;
 
 }
-
 function multiply(a, b) {
 
     return a * b;
 
 }
+function divide(a, b) {
+    return a / b;
+}
 
-//add a num that been clicked in array(text) ;
+
+//add a character that been clicked in array(text) ;
 function getText(e) {
 
     let input = e.target.innerText;
@@ -27,11 +29,11 @@ function getText(e) {
     text.push(input);
 }
 
+//core operation
 function executeOperation(index) {
     //get two arguments for operation
     let a = +text.slice(0, [index]).join('');
     let b = +text.slice([index + 1], (text.length)).join('');
-    let result = 0;
     //select operation
 
     switch (true) {
@@ -44,12 +46,20 @@ function executeOperation(index) {
         case (text[index] == '*'):
             result = multiply(a, b);
             break;
-
+        case (text[index] == '/'):
+            result = divide(a, b);
+            break;
     }
 
     document.getElementById('mainScreen').innerText = `${result}`;
+    //clear the array(text) after one operation
+    text.length = 0;
+    //now array(text) length is 1, which contains only the result of the previous operation
+    text.push(result);
 }
 
+//main function
+//filter of which operator
 function execute(e) {
     getText(e);
     //locate 'enter'
@@ -69,11 +79,29 @@ function execute(e) {
             case (text.indexOf('*') != -1):
                 executeOperation(text.indexOf('*'));
                 break;
+            case (text.indexOf('/') != -1):
+                executeOperation(text.indexOf('/'));
+                break;
+
         }
     }
+
+
+
 }
 
+
+
 function interFace(e) {
+
+    //when after a operation, enter this
+    //there's only one element in the array now
+    //after press an operator after the previous result, there're two elements in the array
+    //so won't enter this if sentence, I'm such a geneious  
+    if (text[0] == result && text.length == 1) {
+        document.getElementById('mainScreen').innerText = '';
+        document.getElementById('upperScreen').innerText = text[0];
+    }
 
     if (e.target.innerText != 'enter') {
 
