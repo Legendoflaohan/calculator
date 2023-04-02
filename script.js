@@ -48,10 +48,7 @@ function execute(e) {
 }
 
 function interFace(e) {
-    if (document.getElementById('upperScreen').innerText == 'upper') {
-        document.getElementById('upperScreen').innerText = '';
-    }
-    
+
     if (e.target.innerText != 'enter') {
         document.getElementById('upperScreen').innerText += e.target.innerText;
     }
