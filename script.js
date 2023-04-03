@@ -62,6 +62,9 @@ function getTextKeyboard(e) {
     if (e.key == 'Backspace') {
         text.pop();
     }
+    if (e.key == 'Escape') {
+        text.length = 0;
+    }
 }
 
 //core operation
@@ -232,6 +235,11 @@ function interFaceKeyboard(e) {
     }
     if (e.key == 'Backspace') {
         document.getElementById('upperScreen').innerText = document.getElementById('upperScreen').innerText.slice(0, -1);
+    }
+    if (e.key == 'Escape') {
+        text.length = 0;
+        document.getElementById('mainScreen').innerText = '';
+        document.getElementById('upperScreen').innerText = '';
     }
 }
 
