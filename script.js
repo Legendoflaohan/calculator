@@ -274,7 +274,12 @@ function soundEffectKeyboard(e) {
 }
 
 function backgroundColorChange(e) {
-    e.target.style.backgroundColor = '#9f9488';
+    // click other places do not affect
+    if (e.target.className == 'unit' ||
+        e.target.className == 'zero' ||
+        e.target.className == 'add') {
+        e.target.style.backgroundColor = '#9f9488';
+    }
 }
 
 function backgroundColorChangeBack(e) {
