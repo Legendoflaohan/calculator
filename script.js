@@ -23,10 +23,17 @@ function divide(a, b) {
 
 //add a character that been clicked in array(text) ;
 function getText(e) {
+    //execute only when click at the correct place
+    if (e.target.classList[0] == 'unit' ||
+        e.target.classList[0] == 'zero' ||
+        e.target.classList[0] == 'add'  ||
+        e.target.classList[0] == 'ac'   ||
+        e.target.classList[0] == 'ce') {
+        let input = e.target.innerText;
 
-    let input = e.target.innerText;
+        text.push(input);
 
-    text.push(input);
+    }
 }
 
 function getTextKeyboard(e) {
@@ -48,7 +55,6 @@ function getTextKeyboard(e) {
         e.key == '.' ||
         e.key == 'Enter') {
         let input = e.key;
-        console.log(input)
         text.push(input);
     }
 }
@@ -137,31 +143,38 @@ function executeKeyboard(e) {
 
 
 function interFace(e) {
-    //when after a operation, enter this
-    //there's only one element in the array now
-    //after press an operator after the previous result, there're two elements in the array
-    //so won't enter this if sentence, I'm such a geneious
-    if (text[0] == result && text.length == 1) {
-        //if the input is an operator, do this
-        if (e.target.innerText == '+' ||
-            e.target.innerText == '-' ||
-            e.target.innerText == '*' ||
-            e.target.innerText == '/') {
-            document.getElementById('mainScreen').innerText = '';
-            document.getElementById('upperScreen').innerText = text[0];
-        } else if (e.target.innerText == 'Enter') {
-            return;
-        } {
-            //if the input is a number character(else of being an operator), do this
-            text.length = 0;
-            document.getElementById('mainScreen').innerText = '';
-            document.getElementById('upperScreen').innerText = '';
+    //show output only when right place been clicked
+    if (e.target.classList[0] == 'unit' ||
+        e.target.classList[0] == 'zero' ||
+        e.target.classList[0] == 'add'  ||
+        e.target.classList[0] == 'ac'   ||
+        e.target.classList[0] == 'ce') {
+        //when after a operation, enter this
+        //there's only one element in the array now
+        //after press an operator after the previous result, there're two elements in the array
+        //so won't enter this if sentence, I'm such a geneious
+        if (text[0] == result && text.length == 1) {
+            //if the input is an operator, do this
+            if (e.target.innerText == '+' ||
+                e.target.innerText == '-' ||
+                e.target.innerText == '*' ||
+                e.target.innerText == '/') {
+                document.getElementById('mainScreen').innerText = '';
+                document.getElementById('upperScreen').innerText = text[0];
+            } else if (e.target.innerText == 'Enter') {
+                return;
+            } {
+                //if the input is a number character(else of being an operator), do this
+                text.length = 0;
+                document.getElementById('mainScreen').innerText = '';
+                document.getElementById('upperScreen').innerText = '';
+            }
         }
-    }
 
-    if (e.target.innerText != 'Enter') {
+        if (e.target.innerText != 'Enter') {
 
-        document.getElementById('upperScreen').innerText += e.target.innerText;
+            document.getElementById('upperScreen').innerText += e.target.innerText;
+        }
     }
 }
 
