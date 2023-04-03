@@ -56,6 +56,9 @@ function getTextKeyboard(e) {
         let input = e.key;
         text.push(input);
     }
+    if (e.key == 'Backspace') {
+        text.pop();
+    }
 }
 
 //core operation
@@ -174,12 +177,8 @@ function interFace(e) {
         }
     }
     if (e.target.classList[0] == 'ce') {
-        console.log(document.getElementById('upperScreen').innerText)
-
         //remove the last character of the upperScreen innerText
         document.getElementById('upperScreen').innerText = document.getElementById('upperScreen').innerText.slice(0, -1);
-        console.log(document.getElementById('upperScreen').innerText)
-
     }
 }
 
@@ -223,6 +222,9 @@ function interFaceKeyboard(e) {
 
             document.getElementById('upperScreen').innerText += e.key;
         }
+    }
+    if (e.key == 'Backspace') {
+        document.getElementById('upperScreen').innerText = document.getElementById('upperScreen').innerText.slice(0, -1);
     }
 }
 
