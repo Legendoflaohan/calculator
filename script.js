@@ -26,13 +26,12 @@ function getText(e) {
     //execute only when click at the correct place
     if (e.target.classList[0] == 'unit' ||
         e.target.classList[0] == 'zero' ||
-        e.target.classList[0] == 'add'  ||
-        e.target.classList[0] == 'ac'   ||
-        e.target.classList[0] == 'ce') {
+        e.target.classList[0] == 'add') {
         let input = e.target.innerText;
-
         text.push(input);
-
+    }
+    if (e.target.classList[0] == 'ce') {
+        text.pop();
     }
 }
 
@@ -146,9 +145,7 @@ function interFace(e) {
     //show output only when right place been clicked
     if (e.target.classList[0] == 'unit' ||
         e.target.classList[0] == 'zero' ||
-        e.target.classList[0] == 'add'  ||
-        e.target.classList[0] == 'ac'   ||
-        e.target.classList[0] == 'ce') {
+        e.target.classList[0] == 'add') {
         //when after a operation, enter this
         //there's only one element in the array now
         //after press an operator after the previous result, there're two elements in the array
@@ -175,6 +172,14 @@ function interFace(e) {
 
             document.getElementById('upperScreen').innerText += e.target.innerText;
         }
+    }
+    if (e.target.classList[0] == 'ce') {
+        console.log(document.getElementById('upperScreen').innerText)
+
+        //remove the last character of the upperScreen innerText
+        document.getElementById('upperScreen').innerText = document.getElementById('upperScreen').innerText.slice(0, -1);
+        console.log(document.getElementById('upperScreen').innerText)
+
     }
 }
 
