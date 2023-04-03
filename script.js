@@ -33,6 +33,9 @@ function getText(e) {
     if (e.target.className == 'ce') {
         text.pop();
     }
+    if (e.target.className == 'ac') {
+        text.length = 0;
+    }
 }
 
 function getTextKeyboard(e) {
@@ -178,6 +181,11 @@ function interFace(e) {
     if (e.target.className == 'ce') {
         //remove the last character of the upperScreen innerText
         document.getElementById('upperScreen').innerText = document.getElementById('upperScreen').innerText.slice(0, -1);
+    }
+    if (e.target.className == 'ac') {
+        text.length = 0;
+        document.getElementById('mainScreen').innerText = '';
+        document.getElementById('upperScreen').innerText = '';
     }
 }
 
