@@ -262,6 +262,8 @@ function backgroundColorChange(e) {
 }
 
 function backgroundColorChangeBack(e) {
+    //JS generate inline style, which takes precedence over style defined in the stylesheet
+    //removeProperty() only remove the element attribute, which sets the inline style for the element
     e.target.style.removeProperty('background-color');
 }
 
