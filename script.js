@@ -30,9 +30,27 @@ function getText(e) {
 }
 
 function getTextKeyboard(e) {
-    let input = e.key;
-    console.log(input)
-    text.push(input);
+    //if input is not legal, do nothing
+    if (e.key == '/' ||
+        e.key == '*' ||
+        e.key == '+' ||
+        e.key == '-' ||
+        e.key == '7' ||
+        e.key == '8' ||
+        e.key == '9' ||
+        e.key == '4' ||
+        e.key == '5' ||
+        e.key == '6' ||
+        e.key == '1' ||
+        e.key == '2' ||
+        e.key == '3' ||
+        e.key == '0' ||
+        e.key == '.' ||
+        e.key == 'Enter') {
+        let input = e.key;
+        console.log(input)
+        text.push(input);
+    }
 }
 
 //core operation
@@ -148,28 +166,45 @@ function interFace(e) {
 }
 
 function interFaceKeyboard(e) {
-
-    if (text[0] == result && text.length == 1) {
-        //if the input is an operator, do this
-        if (e.key == '+' ||
-            e.key == '-' ||
-            e.key == '*' ||
-            e.key == '/') {
-            document.getElementById('mainScreen').innerText = '';
-            document.getElementById('upperScreen').innerText = text[0];
-        } else if (e.key == 'Enter') {
-            return;
-        } else {
-            //if the input is a number character(else of being an operator), do this
-            text.length = 0;
-            document.getElementById('mainScreen').innerText = '';
-            document.getElementById('upperScreen').innerText = '';
+    //if keydown is not legal, show nothing
+    if (e.key == '/' ||
+        e.key == '*' ||
+        e.key == '+' ||
+        e.key == '-' ||
+        e.key == '7' ||
+        e.key == '8' ||
+        e.key == '9' ||
+        e.key == '4' ||
+        e.key == '5' ||
+        e.key == '6' ||
+        e.key == '1' ||
+        e.key == '2' ||
+        e.key == '3' ||
+        e.key == '0' ||
+        e.key == '.' ||
+        e.key == 'Enter') {
+        if (text[0] == result && text.length == 1) {
+            //if the input is an operator, do this
+            if (e.key == '+' ||
+                e.key == '-' ||
+                e.key == '*' ||
+                e.key == '/') {
+                document.getElementById('mainScreen').innerText = '';
+                document.getElementById('upperScreen').innerText = text[0];
+            } else if (e.key == 'Enter') {
+                return;
+            } else {
+                //if the input is a number character(else of being an operator), do this
+                text.length = 0;
+                document.getElementById('mainScreen').innerText = '';
+                document.getElementById('upperScreen').innerText = '';
+            }
         }
-    }
 
-    if (e.key != 'Enter') {
+        if (e.key != 'Enter') {
 
-        document.getElementById('upperScreen').innerText += e.key;
+            document.getElementById('upperScreen').innerText += e.key;
+        }
     }
 }
 
