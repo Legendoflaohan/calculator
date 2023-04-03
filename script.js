@@ -24,13 +24,13 @@ function divide(a, b) {
 //add a character that been clicked in array(text) ;
 function getText(e) {
     //execute only when click at the correct place
-    if (e.target.classList[0] == 'unit' ||
-        e.target.classList[0] == 'zero' ||
-        e.target.classList[0] == 'add') {
+    if (e.target.className == 'unit' ||
+        e.target.className == 'zero' ||
+        e.target.className == 'add') {
         let input = e.target.innerText;
         text.push(input);
     }
-    if (e.target.classList[0] == 'ce') {
+    if (e.target.className == 'ce') {
         text.pop();
     }
 }
@@ -143,12 +143,11 @@ function executeKeyboard(e) {
     }
 }
 
-
 function interFace(e) {
     //show output only when right place been clicked
-    if (e.target.classList[0] == 'unit' ||
-        e.target.classList[0] == 'zero' ||
-        e.target.classList[0] == 'add') {
+    if (e.target.className == 'unit' ||
+        e.target.className == 'zero' ||
+        e.target.className == 'add') {
         //when after a operation, enter this
         //there's only one element in the array now
         //after press an operator after the previous result, there're two elements in the array
@@ -176,7 +175,7 @@ function interFace(e) {
             document.getElementById('upperScreen').innerText += e.target.innerText;
         }
     }
-    if (e.target.classList[0] == 'ce') {
+    if (e.target.className == 'ce') {
         //remove the last character of the upperScreen innerText
         document.getElementById('upperScreen').innerText = document.getElementById('upperScreen').innerText.slice(0, -1);
     }
@@ -228,8 +227,6 @@ function interFaceKeyboard(e) {
     }
 }
 
-
-
 function soundEffect(e) {
     switch (e.target.innerText) {
         case '0':
@@ -260,10 +257,19 @@ function soundEffectKeyboard(e) {
 
 }
 
+function backgroundColorChange(e) {
+    e.target.style.backgroundColor = '#9f9488';
+}
+
+function backgroundColorChangeBack(e) {
+    e.target.style.removeProperty('background-color');
+}
 
 //return text from element that been clicked
 addEventListener('click', interFace);
 addEventListener('click', execute);
+addEventListener('mousedown', backgroundColorChange);
+addEventListener('mouseup', backgroundColorChangeBack);
 addEventListener('click', soundEffect);
 //keyboard feature
 addEventListener('keydown', interFaceKeyboard);
