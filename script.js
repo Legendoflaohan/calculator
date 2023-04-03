@@ -131,7 +131,9 @@ function interFace(e) {
             e.target.innerText == '/') {
             document.getElementById('mainScreen').innerText = '';
             document.getElementById('upperScreen').innerText = text[0];
-        } else {
+        } else if (e.target.innerText == 'Enter') {
+            return;
+        } {
             //if the input is a number character(else of being an operator), do this
             text.length = 0;
             document.getElementById('mainScreen').innerText = '';
@@ -155,6 +157,8 @@ function interFaceKeyboard(e) {
             e.key == '/') {
             document.getElementById('mainScreen').innerText = '';
             document.getElementById('upperScreen').innerText = text[0];
+        } else if (e.key == 'Enter') {
+            return;
         } else {
             //if the input is a number character(else of being an operator), do this
             text.length = 0;
